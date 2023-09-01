@@ -1,14 +1,34 @@
-﻿//  Напишите программу, которая задаёт массив из 8 элементов случайных целых чисел от 1 до 50 и выводит их на экран.
+﻿// Задача 27: Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
+// 452 -> 11
+// 82 -> 10
+// 9012 -> 12
 
-int lenArray = ReadInt("Введите длинну массива: ");
+int number = ReadInt("Введите число: ");
 
-int[] randomArray = new int[8];
-for (int i = 0; i < 8; i++)
+int len = NumberLen(number);
+SumNumbers(number, len);
+
+int NumberLen(int a)
 {
-    randomArray[i] = new Random().Next(1,50);
-    Console.Write(randomArray[i] + " ");
+    int index = 0;
+    while (a > 0)
+    {
+        a /= 10;
+        index++;
+    }
+    return index;
 }
 
+void SumNumbers(int n, int len)
+{
+    int sum = 0;
+    for (int i = 1; i <= len; i++)
+    {
+        sum += n % 10;
+        n /= 10;
+    }
+    Console.WriteLine($"сумма цифр {sum}");
+}
 
 int ReadInt(string message)
 {
